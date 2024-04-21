@@ -49,11 +49,11 @@ public class SecurityConfig {
         return http
                 .cors(Customizer.withDefaults())
                 .csrf(x -> x.disable())
-                .authorizeHttpRequests( auth -> auth
+                .authorizeHttpRequests(auth -> auth
                         .requestMatchers(
-                                HttpMethod.POST,"/register", "/signin").permitAll()
+                                HttpMethod.POST, "/signup", "/signin").permitAll()
                         .requestMatchers(
-                                HttpMethod.GET,"/").permitAll()
+                                HttpMethod.GET, "/").permitAll()
                         .anyRequest().authenticated()
                 )
                 .sessionManagement(session ->
@@ -67,10 +67,12 @@ public class SecurityConfig {
         JWKSet jwkSet = new JWKSet(rsaKey);
         return (jwkSelector, securityContext) -> jwkSelector.select(jwkSet);
     }
+
     @Bean
     JwtEncoder jwtEncoder(JWKSource<SecurityContext> jwks) {
         return new NimbusJwtEncoder(jwks);
     }
+
     @Bean
     JwtDecoder jwtDecoder() throws JOSEException {
         return NimbusJwtDecoder.withPublicKey(rsaKey.toRSAPublicKey()).build();

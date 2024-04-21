@@ -6,3 +6,6 @@
 5,Which word matches the image?,elk,elk,deer,moose
 6,Which word matches the image?,ladybird,ladybird,Lymexyloidea,Endomychidae
 7,Which word matches the image?,nightingale,robin,nightingale,silverbird
+8,penis,  p,p,p,p
+9,hi,  l,l,l,l
+10,bruh,  o,o,o,o
